@@ -1,3 +1,5 @@
+import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container } from "react-bootstrap";
 import styled from "styled-components";
 
@@ -6,6 +8,7 @@ export function HomeView () {
         <Container>
     <Title>Uber Jet</Title>
     <Button>Teste</Button>
+    <FontAwesomeIcon icon={faFacebookSquare} />
     </Container>
     )
 }
