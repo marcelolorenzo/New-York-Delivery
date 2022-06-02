@@ -1,7 +1,11 @@
+import { Button, Container } from "react-bootstrap";
+import { Routes } from "./views/routes";
+
 function App() {
   return (
-    <p>Uber Jet</p>
+    <Routes />
   );
 }
 
 export default App;
+
