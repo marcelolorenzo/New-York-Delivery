@@ -4,7 +4,8 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify ';
+import { ToastContainer } from 'react-toastify';
+import { GlobalStyle } from './assets/css/global';
 
 
 const root = ReactDOM.createRoot(
@@ -13,6 +14,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <GlobalStyle />
     <App />
     <ToastContainer />
     </BrowserRouter>
