@@ -1,7 +1,8 @@
-import { Button, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import styled from "styled-components";
 import bgMobile from "../../assets/img/bg-uber-jet-mobile.jpg"
 import bgDesktop from "../../assets/img/bg-uber-jet.jpg"
+import { CustomButton } from "../../components/CustomButton";
 
 export function HomeView () {
     return (
@@ -9,8 +10,8 @@ export function HomeView () {
       <Banner className="vh-100">
          <Container className="h-100 d-flex flex-column justify-content-center align-items-center align-items-lg-start">
          <Title className="text-white text-center text-lg-start mt-auto mt-lg-0">Take the next best plane to your dream destination.</Title>
-         <Button variant="success" size="lg" className="mt-auto mt-lg-3 mb-2">Create an account</Button>
-         <Button variant="success" size="lg" className="mb-4">Login</Button>
+         <CustomButton variant="success" size="lg" className="mt-auto mt-lg-3 mb-2">Create an account</CustomButton>
+         <CustomButton variant="success" size="lg" className="mb-4">Login</CustomButton>
       </Container> 
        </Banner>
     )
