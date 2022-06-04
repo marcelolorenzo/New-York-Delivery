@@ -1,18 +1,40 @@
-import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Container } from "react-bootstrap";
 import styled from "styled-components";
+import bgMobile from "../../assets/img/bg-uber-jet-mobile.jpg"
+import bgDesktop from "../../assets/img/bg-uber-jet.jpg"
 
 export function HomeView () {
     return (
-        <Container>
-    <Title>Uber Jet</Title>
-    <Button>Teste</Button>
-    <FontAwesomeIcon icon={faFacebookSquare} />
-    </Container>
+      
+      <Banner className="vh-100">
+         <Container className="h-100 d-flex flex-column justify-content-center align-items-center align-items-lg-start">
+         <Title className="text-white text-center text-lg-start mt-auto mt-lg-0">Take the next best plane to your dream destination.</Title>
+         <Button variant="success" size="lg" className="mt-auto mt-lg-3 mb-2">Create an account</Button>
+         <Button variant="success" size="lg" className="mb-4">Login</Button>
+      </Container> 
+       </Banner>
     )
 }
 
-const Title = styled.p`
-  font-size: 3rem;
+const Banner = styled.div`
+  background: url(${bgMobile}) no-repeat center center;
+  background-size: cover;
+  @media (min-width: 576px) {
+    background-image: url(${bgDesktop});
+  }
+  @media (min-width: 768px) {
+    background-image: url(${bgMobile});
+  }
+  @media (min-width: 992px) {
+    background-image: url(${bgDesktop});
+  }
+`
+const Title = styled.h1`
+  font-size: 2.25rem;
+  font-weight: bold;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  @media (min-width: 992px)  {
+    font-size: 3rem;
+    max-width: 500px;
+  }
 `
