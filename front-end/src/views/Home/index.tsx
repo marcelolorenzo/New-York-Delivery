@@ -6,12 +6,11 @@ import { CustomButton } from "../../components/CustomButton";
 
 export function HomeView () {
     return (
-      
       <Banner className="vh-100">
          <Container className="h-100 d-flex flex-column justify-content-center align-items-center align-items-lg-start">
          <Title className="text-white text-center text-lg-start mt-auto mt-lg-0">Take the next best plane to your dream destination.</Title>
-         <CustomButton variant="success" size="lg" className="mt-auto mt-lg-3 mb-2">Create an account</CustomButton>
-         <CustomButton variant="success" size="lg" className="mb-4">Login</CustomButton>
+         <CustomButton variant="success" size="lg" className="mt-auto mt-lg-3 mb-2" to='/cadastro'>Create an account</CustomButton>
+         <CustomButton variant="success" size="lg" className="mb-4" to='/login'>Login</CustomButton>
       </Container> 
        </Banner>
     )
