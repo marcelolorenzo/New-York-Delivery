@@ -2,12 +2,12 @@ import { Button, ButtonProps, Spinner } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import styled from 'styled-components';
 
-type Props = ButtonProps & {
-     loading?: boolean
-     to?: string
-     }
+/* type Props = ButtonProps & {
+     loading?: boolean;
+     to?: string;
+     } */
 
-export function CustomButton ({ children, loading, to, ... otherProps }: Props) {
+export function CustomButton ({ children, loading, to, ... otherProps }) {
     const button = (
         <ButtonStyled { ... otherProps}>
             {loading && (
@@ -35,13 +35,13 @@ const ButtonStyled = styled(Button)`
     padding-right: 50px;
     ${props => props.size === 'lg' && `
         font-size: 1.125rem; 
-    ` }
+    `}
     ${props => (props.variant === 'primary' || !props.variant) && `
         background-color: #1117A3;
         border-color: #1117A3;
         &:hover {
             background-color: #2e33c1;
             border-color: #2e33c1;
-        }`
-
-    ` }
+        }
+    `}
+    ` 

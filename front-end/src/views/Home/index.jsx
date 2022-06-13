@@ -3,9 +3,11 @@ import styled from "styled-components";
 import bgMobile from "../../assets/img/bg-uber-jet-mobile.jpg"
 import bgDesktop from "../../assets/img/bg-uber-jet.jpg"
 import { CustomButton } from "../../components/CustomButton";
+import { Layout } from "../../components/Layout";
 
 export function HomeView () {
     return (
+      <Layout>
       <Banner className="vh-100">
          <Container className="h-100 d-flex flex-column justify-content-center align-items-center align-items-lg-start">
          <Title className="text-white text-center text-lg-start mt-auto mt-lg-0">Take the next best plane to your dream destination.</Title>
@@ -13,6 +15,7 @@ export function HomeView () {
          <CustomButton variant="success" size="lg" className="mb-4" to='/login'>Login</CustomButton>
       </Container> 
        </Banner>
+      </Layout>
     )
 }
 
