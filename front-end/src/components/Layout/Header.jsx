@@ -20,14 +20,14 @@ export function Header () {
     }
     window.addEventListener('scroll', scrollChange)
     return () => {
-      window.removeEventListener('scroll', scrollChange)
+      window.removeEventListener('scroll', scrollChange )
     }
   },[isTransparent])
     return (
-<Navbar fixed='top' expand="lg" bg={isTransparent ? undefined : 'white'} >
+<NavbarStyled fixed='top' expand="lg" bg={isTransparent ? undefined : 'white'} >
   <Container>
     <Navbar.Brand to='/' as={Link}>
-        <img src={Logo} width={194} height={51} />
+        <ImageStyled src={Logo} width={194} height={51} />
         </Navbar.Brand>
     <NavbarToggleStyled aria-controls="basic-navbar-nav">
 <FontAwesomeIcon icon={faBars} className={isTransparent ? 'text-white' : 'text-dark'} size='lg' />
@@ -40,9 +40,23 @@ export function Header () {
       </Nav>
     </NavbarCollapseStyled >
   </Container>
-</Navbar>  
+</NavbarStyled>  
   )
  }
+
+const NavbarStyled = styled(Navbar)`
+   transition: all .3s linear;
+   ${props => props.bg === 'white' && `
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+   `}
+`
+
+ const ImageStyled = styled.img`
+    @media (min-width: 992px) {
+        width: 96px;
+        height: auto; 
+    }
+`
 
  const NavbarToggleStyled = styled(NavbarToggle)`
     border: none;
