@@ -35,8 +35,8 @@ export function Header () {
     <NavbarCollapseStyled id="basic-navbar-nav" className="justify-content-center text-center">
       <Nav className="ms-auto"> 
         <NavLinkStyled forwardedAs={Link} to='/'>Start here</NavLinkStyled>
-        <CustomButton className="mt-2 mt-lg-0 ms-lg-4">Create an account</CustomButton>
-        <CustomButton className="mt-2 mt-lg-0 ms-lg-4">Login</CustomButton>
+        <CustomButton className="mt-2 mt-lg-0 ms-lg-4" to='/cadastro'>Create an account</CustomButton>
+        <CustomButton className="mt-2 mt-lg-0 ms-lg-4" to='/login'>Login</CustomButton>
       </Nav>
     </NavbarCollapseStyled >
   </Container>
