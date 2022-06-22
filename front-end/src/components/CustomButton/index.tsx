@@ -2,21 +2,21 @@ import { Button, ButtonProps, Spinner } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import styled from 'styled-components';
 
-/* type Props = ButtonProps & {
-     loading?: boolean;
-     to?: string;
-     } */
+type Props = ButtonProps & {
+    loading?: boolean;
+    to?: string;
+}
 
-export function CustomButton ({ children, loading, to, ... otherProps }) {
+export function CustomButton({ children, loading, to, ...otherProps }: Props) {
     const button = (
-        <ButtonStyled { ... otherProps}>
+        <ButtonStyled {...otherProps}>
             {loading && (
                 <Spinner animation="border" role="status" size='sm' className="me-2">
                     <span className="visually-hidden">Loading ...</span>
                 </Spinner>
             )}
             {children}
-            </ButtonStyled>
+        </ButtonStyled>
     )
     if (to) {
         return (
@@ -26,7 +26,7 @@ export function CustomButton ({ children, loading, to, ... otherProps }) {
         )
     }
     return button
-} 
+}
 
 const ButtonStyled = styled(Button)`
     border-radius: 100px;
