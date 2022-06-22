@@ -5,24 +5,55 @@ import { CustomButton } from "../../components/CustomButton";
 import { FormField } from "../../components/FormField";
 import { Layout } from "../../components/Layout";
 import { PageTitle } from "../../components/PageTitle";
+import * as yup from 'yup';
+
+
+type FormValues = {
+    name: string
+    email: string
+    phone: string
+    password: string
+    agree: boolean
+}
+
 
 export function RegisterView() {
-    const formik = useFormik({
+    const formik = useFormik<FormValues>({
         initialValues: {
             name: '',
             email: '',
             phone: '',
             password: '',
-            agree: false,
+            agree: false
         },
+        validationSchema: yup.object().shape({
+            name: yup.string()
+            .required('Fill up your name.')
+            .min(5),
+            email: yup.string()
+            .required('Fill up the e-mail.')
+            .email('Write a valid e-mail.'),
+            phone: yup.string()
+            .required('Write your phone number.'),
+            password: yup.string()
+            .required('Write your password.')
+            .min(8, '8 characters minimum.')
+            .max(50, '50 characters maximum'),
+            agree: yup.boolean()
+            .equals([true], 'It is necessary to accept the terms.')
+        }),
         onSubmit: (values) => {
             console.log('oi', values)
+           
         }
     })
-    const getFieldProps = (fieldName: string) {
+    const getFieldProps = (fieldName: keyof FormValues) => {
         return {
             ... formik.getFieldProps(fieldName),
-            controlId: `input-${fieldName}` 
+            controlId: `input-${fieldName}`,
+            error: formik.errors[fieldName],
+            isInvalid: formik.touched[fieldName] && !!formik.errors[fieldName], 
+            isValid: formik.touched[fieldName] && !formik.errors[fieldName]
         }
     }
     return (
@@ -65,6 +96,11 @@ export function RegisterView() {
                                     type="checkbox"
                                     label="I read and accept the terms of use."
                                 />
+                                {formik.touched.agree && formik.errors.agree && (
+                                    <Form.Control.Feedback type='invalid' className='d-block'>
+                                        {formik.errors.agree}
+                                    </Form.Control.Feedback>
+                                )}
                             </Form.Group>
                             <div className="d-grid mb-4">
                                 <CustomButton type='submit'>
