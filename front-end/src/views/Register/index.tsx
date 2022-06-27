@@ -6,6 +6,10 @@ import { FormField } from "../../components/FormField";
 import { Layout } from "../../components/Layout";
 import { PageTitle } from "../../components/PageTitle";
 import * as yup from 'yup';
+import { createUser } from "../../services/createUser";
+import { FirebaseError } from 'firebase/app';
+import { AuthErrorCodes } from "firebase/auth";
+import { toast } from 'react-toastify';
 
 
 type FormValues = {
@@ -42,9 +46,17 @@ export function RegisterView() {
             agree: yup.boolean()
             .equals([true], 'It is necessary to accept the terms.')
         }),
-        onSubmit: (values) => {
-            console.log('oi', values)
-           
+        onSubmit: async (values, { setFieldError }) => {
+            try {
+               const user = await createUser(values)
+                console.log('user', user)
+            } catch(error) {
+                if (error instanceof FirebaseError && error.code === AuthErrorCodes.EMAIL_EXISTS) {
+                    setFieldError('email', 'This email is already in use')
+                    return
+                }
+                toast.error('An error occured. Try again.')
+            }
         }
     })
     const getFieldProps = (fieldName: keyof FormValues) => {
