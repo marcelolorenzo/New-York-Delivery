@@ -8,6 +8,10 @@ import styled from "styled-components";
 import Logo from "../../assets/img/Logo-UberJet.png"
 import { CustomButton } from "../CustomButton";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteUser, selectIsUserLoggedIn } from "../../store/slices/userSlice";
+import { logoutUser } from "../../services/logoutUser";
+
 
 export function Header () {
   const [isTransparent, setIsTransparent] = useState(true)
@@ -23,6 +27,14 @@ export function Header () {
       window.removeEventListener('scroll', scrollChange )
     }
   },[isTransparent])
+  const isUserLoggedIn = useSelector(selectIsUserLoggedIn)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const handleLogout = async () => {
+    await logoutUser()
+    dispatch(deleteUser())
+    navigate('/login ')
+  }
     return (
 <NavbarStyled fixed='top' expand="lg" bg={isTransparent ? undefined : 'white'} >
   <Container>
@@ -35,8 +47,17 @@ export function Header () {
     <NavbarCollapseStyled id="basic-navbar-nav" className="justify-content-center text-center">
       <Nav className="ms-auto"> 
         <NavLinkStyled forwardedAs={Link} to='/'>Start here</NavLinkStyled>
-        <CustomButton className="mt-2 mt-lg-0 ms-lg-4" to='/cadastro'>Create an account</CustomButton>
-        <CustomButton className="mt-2 mt-lg-0 ms-lg-4" to='/login'>Login</CustomButton>
+        {isUserLoggedIn ? (
+          <>
+          <CustomButton className="mt-2 mt-lg-0 ms-lg-4" to='/novo-pedido'>New Order</CustomButton>
+          <CustomButton className="mt-2 mt-lg-0 ms-lg-4" onClick={handleLogout}>Exit</CustomButton>
+          </>
+        ) : ( 
+          <>
+          <CustomButton className="mt-2 mt-lg-0 ms-lg-4" to='/cadastro'>Create an account</CustomButton>
+          <CustomButton className="mt-2 mt-lg-0 ms-lg-4" to='/login'>Login</CustomButton>
+          </>
+        )}
       </Nav>
     </NavbarCollapseStyled >
   </Container>
