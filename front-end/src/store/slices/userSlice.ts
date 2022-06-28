@@ -16,10 +16,12 @@ const slice = createSlice({
     initialState,
     reducers: {
         updateUser: (state, action: PayloadAction<User>) => {
-            console.log('O state agora é', state)
-            console.log('Ação que chegou: ', action)
+            state.loadingUser = false
+            state.user = action.payload
         },
-        deleteUser: () => {
+        deleteUser: (state) => {
+            state.loadingUser = false
+            state.user = null
         }
     }
 })
