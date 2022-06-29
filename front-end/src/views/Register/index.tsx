@@ -36,26 +36,26 @@ export function RegisterView() {
         },
         validationSchema: yup.object().shape({
             name: yup.string()
-            .required('Fill up your name.')
-            .min(5),
+                .required('Fill up your name.')
+                .min(5),
             email: yup.string()
-            .required('Fill up the e-mail.')
-            .email('Write a valid e-mail.'),
+                .required('Fill up the e-mail.')
+                .email('Write a valid e-mail.'),
             phone: yup.string()
-            .required('Write your phone number.'),
+                .required('Write your phone number.'),
             password: yup.string()
-            .required('Write your password.')
-            .min(8, '8 characters minimum.')
-            .max(50, '50 characters maximum'),
+                .required('Write your password.')
+                .min(8, '8 characters minimum.')
+                .max(50, '50 characters maximum'),
             agree: yup.boolean()
-            .equals([true], 'It is necessary to accept the terms.')
+                .equals([true], 'It is necessary to accept the terms.')
         }),
         onSubmit: async (values, { setFieldError }) => {
             try {
-               const user = await createUser(values)
-               dispatch(updateUser(user))
-               navigate('/novo-pedido')
-            } catch(error) {
+                const user = await createUser(values)
+                dispatch(updateUser(user))
+                navigate('/novo-pedido')
+            } catch (error) {
                 if (error instanceof FirebaseError && error.code === AuthErrorCodes.EMAIL_EXISTS) {
                     setFieldError('email', 'This email is already in use')
                     return
@@ -64,12 +64,12 @@ export function RegisterView() {
             }
         }
     })
-     const getFieldProps = (fieldName: keyof FormValues) => {
+    const getFieldProps = (fieldName: keyof FormValues) => {
         return {
-            ... formik.getFieldProps(fieldName),
+            ...formik.getFieldProps(fieldName),
             controlId: `input-${fieldName}`,
             error: formik.errors[fieldName],
-            isInvalid: formik.touched[fieldName] && !!formik.errors[fieldName], 
+            isInvalid: formik.touched[fieldName] && !!formik.errors[fieldName],
             isValid: formik.touched[fieldName] && !formik.errors[fieldName]
         }
     }
@@ -83,18 +83,18 @@ export function RegisterView() {
                             <FormField
                                 label="Name"
                                 placeholder="Fill up your name here"
-                                { ... getFieldProps('name')}
+                                {...getFieldProps('name')}
                             />
                             <FormField
                                 type='email'
                                 label="E-mail"
                                 placeholder="This is going to be your user name"
-                                {... getFieldProps('email')}
+                                {...getFieldProps('email')}
                             />
                             <FormField
                                 label="Telefone"
                                 placeholder="(00) 00000-0000"
-                                {... getFieldProps('phone')}
+                                {...getFieldProps('phone')}
                                 mask={[
                                     { mask: '(00) 0000-0000' },
                                     { mask: '(00) 00000-0000' },
@@ -104,12 +104,12 @@ export function RegisterView() {
                             <FormField
                                 label="Password"
                                 placeholder="Inform your password"
-                                {... getFieldProps('password')}
+                                {...getFieldProps('password')}
                                 type="password"
                             />
                             <Form.Group className="mb-3" controlId="input-agree">
                                 <Form.Check
-                                    {... getFieldProps('agree')}
+                                    {...getFieldProps('agree')}
                                     type="checkbox"
                                     label="I read and accept the terms of use."
                                 />
@@ -121,10 +121,10 @@ export function RegisterView() {
                             </Form.Group>
                             <div className="d-grid mb-4">
                                 <CustomButton
-                                 type='submit'
-                                 loading={formik.isValidating || formik.isSubmitting}
-                                 disabled={formik.isValidating || formik.isSubmitting}
-                                 >
+                                    type='submit'
+                                    loading={formik.isValidating || formik.isSubmitting}
+                                    disabled={formik.isValidating || formik.isSubmitting}
+                                >
                                     Create new account
                                 </CustomButton>
                             </div>

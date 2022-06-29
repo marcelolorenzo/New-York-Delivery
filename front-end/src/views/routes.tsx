@@ -1,6 +1,7 @@
 import { Route, Routes as RDRoutes } from "react-router-dom";
 import { PublicOnlyRoute } from "../components/PublicOnlyRoute";
 import { HomeView } from "./Home";
+import { LoginView } from "./Login";
 import { NewOrderView } from "./NewOrder";
 import { NotFoundView } from "./NotFound";
 import { RegisterView } from "./Register";
@@ -16,6 +17,15 @@ export function Routes () {
                    <RegisterView />
                </PublicOnlyRoute>
                }
+               />
+               <Route
+               path='/login'
+                element={
+                <PublicOnlyRoute>
+                    <LoginView />
+                </PublicOnlyRoute>
+                }
+                />
              <Route path='/novo-pedido' element={<NewOrderView />} />
              <Route path='*' element={<NotFoundView />} />
          </RDRoutes>
