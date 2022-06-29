@@ -53,7 +53,7 @@ export function RegisterView() {
         onSubmit: async (values, { setFieldError }) => {
             try {
                const user = await createUser(values)
-               dispatch(updateUser)(user))
+               dispatch(updateUser(user))
                navigate('/novo-pedido')
             } catch(error) {
                 if (error instanceof FirebaseError && error.code === AuthErrorCodes.EMAIL_EXISTS) {

@@ -13,7 +13,7 @@ export function HomeView () {
       <Layout withoutMargin>
       <Banner className="vh-100">
          <Container className="h-100 d-flex flex-column justify-content-center align-items-center align-items-lg-start">
-         <Title className="text-white text-center text-lg-start mt-auto mt-lg-0">Take the next best plane to your dream destination.</Title>
+         <Title className="text-white text-center text-lg-start mt-auto mt-lg-0">Take the next best meal to your house destination.</Title>
          {isUserLoggedIn ? (
           <CustomButton variant="success" size="lg" className="mt-auto mt-lg-3 mb-4" to='/novo-pedido'>New Order</CustomButton>
          ) : (
@@ -22,7 +22,6 @@ export function HomeView () {
           <CustomButton variant="success" size="lg" className="mb-4" to='/login'>Login</CustomButton>
           </>
          )}
-         
       </Container> 
        </Banner>
       </Layout>
