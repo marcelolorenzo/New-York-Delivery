@@ -1,9 +1,17 @@
 import { useFormik } from "formik";
 import { Col, Container, Form, Row } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import { CustomButton } from "../../components/CustomButton";
 import { FormField } from "../../components/FormField";
 import { Layout } from "../../components/Layout";
 import { PageTitle } from "../../components/PageTitle";
+import * as yup from 'yup'
+import { loginUser } from "../../services/loginuser";
+import { AuthErrorCodes } from "firebase/auth";
+import { toast } from "react-toastify";
+import { updateUser } from "../../store/slices/userSlice";
+import { useDispatch } from "react-redux";
+import { FirebaseError } from "firebase/app";
 
 type FormValues = {
     email: string
@@ -11,13 +19,31 @@ type FormValues = {
 }
 
 export function LoginView() {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const formik = useFormik({
         initialValues: {
             email: '',
             password: ''
         },
+        validationSchema: yup.object().shape({
+            email: yup.string()
+                .required('Write your e-mail.')
+                .email('Write a valid e-mail.'),
+            password: yup.string()
+                .required('Write your password.')
+        }),
         onSubmit: async (values) => {
-            console.log('values', values)
+            try {
+                const user = await loginUser(values)
+                dispatch(updateUser(user))
+                navigate('/novo-pedido')
+            } catch (error) {
+                const errorMsg = error instanceof FirebaseError &&
+                    (error.code === AuthErrorCodes.INVALID_PASSWORD ||
+                        error.code === AuthErrorCodes.USER_DELETED) ? 'Invalid Login or Password.' : 'Failed to Login.'
+                toast.error(errorMsg)
+            }
         }
     })
     const getFieldProps = (fieldName: keyof FormValues) => {
