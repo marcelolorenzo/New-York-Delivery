@@ -3,7 +3,7 @@ import styled from "styled-components"
 export function EstimateDetails() {
     return (
         <WithoutEstimateStyled className="d-none d-md-flex">
-            <p className="m-0">Fill in the data on the side to see the price</p>
+            <p className="m-0 ">Fill in the data on the side to see the price</p>
         </WithoutEstimateStyled>
     )
 }
