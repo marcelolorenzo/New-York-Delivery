@@ -1,15 +1,29 @@
 import { Autocomplete } from "@react-google-maps/api";
 import { useRef } from "react";
-import { FormField, Props } from "../FormField";
+import { Address } from "../../entities/Address";
+import { FormField, FormFieldProps } from "../FormField";
 import { LoadGoogleScript } from "../LoadGoogleScript";
 
-export function AutocompleteField (fieldProps: Props) {
+type Props = {
+    value: null | Address
+    onChange: (address: null | Address) => void
+} & Omit<FormFieldProps, 'value' | 'onChange'>
+
+export function AutocompleteField ({ value, onChange, ...fieldProps}: Props) {
     const autocompleteRef = useRef<null | google.maps.places.Autocomplete>(null)
     const handleLoad = (autocomplete: google.maps.places.Autocomplete) => {
         autocompleteRef.current = autocomplete
     }
     const handleChange = () => {
-        console.log(autocompleteRef.current?.getPlace())
+        const place = autocompleteRef.current?.getPlace()
+        if (place && place.formatted_address && place.geometry?.location) {
+            const address: Address = {
+                address: place.formatted_address,
+                lat: place.geometry.location.lat(),
+                lng: place.geometry.location.lng()
+            }
+            onChange(address)
+        }
     }
     return (
         <LoadGoogleScript>
@@ -17,8 +31,12 @@ export function AutocompleteField (fieldProps: Props) {
                 onLoad={handleLoad}
                 onPlaceChanged={handleChange}
             >
-                <FormField {...fieldProps} />
+                <FormField 
+                {...fieldProps} 
+                onChange={() => onChange(null)}
+                />
             </Autocomplete>
         </LoadGoogleScript>
     )
 }
+

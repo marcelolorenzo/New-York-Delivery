@@ -6,7 +6,7 @@ import { FormField } from "../../components/FormField";
 import { Layout } from "../../components/Layout";
 import { PageTitle } from "../../components/PageTitle";
 import * as yup from 'yup'
-import { loginUser } from "../../services/loginuser";
+import { loginUser } from "../../services/loginUser";
 import { AuthErrorCodes } from "firebase/auth";
 import { toast } from "react-toastify";
 import { updateUser } from "../../store/slices/userSlice";

@@ -1,7 +1,7 @@
 import { useLoadScript } from "@react-google-maps/api";
 import { Alert, Spinner } from "react-bootstrap";
 
-const libraries: ("drawing" | "geometry" | "localC ontext" | "places" | "visualization")[] = ['places']
+const libraries: ("drawing" | "geometry" | "localContext" | "places" | "visualization")[] = ['places']
 
 type Props = {
     children: JSX.Element

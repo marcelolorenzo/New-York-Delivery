@@ -9,7 +9,7 @@ type CredentialsInput = {
 }
 
 
-export function loginUser = async ({ email, password }: CredentialsInput): Promise<User> => {
+export const loginUser = async ({ email, password }: CredentialsInput): Promise<User> => {
     const result = await signInWithEmailAndPassword(auth, email, password)
     return getUser(result.user.uid)
 }
