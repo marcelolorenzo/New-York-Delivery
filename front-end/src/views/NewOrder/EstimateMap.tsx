@@ -30,7 +30,7 @@ export function EstimateMap() {
             <WrapStyled>
                 <GoogleMap
                     mapContainerStyle={{
-                        minHeight: 200
+                        minHeight: 180
                     }}
                     center={{ lat: 0, lng: 0 }}
                     zoom={16}
