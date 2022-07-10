@@ -4,6 +4,7 @@ import { PublicOnlyRoute } from "../components/PublicOnlyRoute";
 import { HomeView } from "./Home";
 import { LoginView } from "./Login";
 import { NewOrderView } from "./NewOrder";
+import { NewOrderSuccessView } from "./NewOrderSuccess";
 import { NotFoundView } from "./NotFound";
 import { RegisterView } from "./Register";
 
@@ -32,6 +33,14 @@ export function Routes() {
                 element={
                     <PrivateRoute>
                         <NewOrderView />
+                    </PrivateRoute>
+                }
+            />
+             <Route
+                path='/novo-pedido/sucesso'
+                element={
+                    <PrivateRoute>
+                        <NewOrderSuccessView />
                     </PrivateRoute>
                 }
             />
