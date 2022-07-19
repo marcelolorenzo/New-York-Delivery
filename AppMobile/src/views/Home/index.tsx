@@ -1,17 +1,24 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { ImageBackground, SafeAreaView, StyleSheet } from "react-native";
 import bg from '../../assets/img/bg-newyork-mobile.jpg';
 import logo from '../../assets/img/Logo-NewYork.png';
 import { CustomButton } from "../../components/CustomButton";
 import { CustomText } from "../../components/CustomText";
+import { RootStackParamList } from '../../routes';
 
-export function HomeView() {
+type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+
+export function HomeView({navigation}: Props) {
+    const handlePressLogin = () => {
+        navigation.navigate('Login');
+    }
     return (
         <ImageBackground source={bg} style={styles.background}>
             <SafeAreaView style={styles.view}>
                 <Image source={logo} />
                 <CustomText bold style={styles.title}>Take the next best meal directly to your home.</CustomText>
-                <CustomButton variant="success" size="lg">
+                <CustomButton variant="success" size="lg" onPress={handlePressLogin}>
                     Login
                     </CustomButton>
             </SafeAreaView>
