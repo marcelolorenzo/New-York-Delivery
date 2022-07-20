@@ -25,7 +25,10 @@ export function LoginView() {
             password: yup.string().required('Inform the password.'),
           }),
         onSubmit: async values => {
-
+            try {
+                const user = await loginUser(values);
+              } catch (error) {
+                }
         },
     });
     const getFieldProps = (fieldName: keyof FormValues) => ({
