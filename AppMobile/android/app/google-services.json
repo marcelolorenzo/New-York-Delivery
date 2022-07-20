@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "858461805259",
+    "project_id": "new-york-delivery-bdb00",
+    "storage_bucket": "new-york-delivery-bdb00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858461805259:android:c8708b2d8956f467f7194e",
+        "android_client_info": {
+          "package_name": "com.appmobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858461805259-q43fhre4olckq9jrabrvqf35a5ou75go.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqNOM3wtQfpLiIaUymf7xuvsDTBDMcDrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858461805259-q43fhre4olckq9jrabrvqf35a5ou75go.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
