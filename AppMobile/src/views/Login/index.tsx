@@ -6,6 +6,9 @@ import { FormField } from '../../components/FormField';
 import * as yup from 'yup';
 import Toast from 'react-native-toast-message';
 import { loginUser } from '../../../android/app/src/services/loginUser';
+import { isNativeFirebaseAuthError } from '../../utils/isNativeFirebaseAuthError';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../routes';
 
 
 
@@ -14,7 +17,9 @@ type FormValues = {
     password: string;
 };
 
-export function LoginView() {
+type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
+
+export function LoginView({ navigation }: Props) {
     const formik = useFormik<FormValues>({
         initialValues: {
             email: '',
@@ -30,6 +35,7 @@ export function LoginView() {
         onSubmit: async values => {
             try {
                 const user = await loginUser(values);
+                navigation.navigate('Orders');
               } catch (error) {
                 const errorMsg =
           isNativeFirebaseAuthError(error) &&
