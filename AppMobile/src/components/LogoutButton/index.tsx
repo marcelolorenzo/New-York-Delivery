@@ -23,7 +23,6 @@ export function LogoutButton() {
             ],
           );
         };
- };
     return (
         <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
       <FontAwesomeIcon icon={faRightFromBracket} color="#FFF" size={18} />
