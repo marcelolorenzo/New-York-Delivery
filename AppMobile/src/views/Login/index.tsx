@@ -9,6 +9,8 @@ import { loginUser } from '../../../android/app/src/services/loginUser';
 import { isNativeFirebaseAuthError } from '../../utils/isNativeFirebaseAuthError';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../routes';
+import { useDispatch } from 'react-redux';
+import { updateUser } from '../../store/slices/userSlice';
 
 
 
@@ -20,6 +22,7 @@ type FormValues = {
 type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
 export function LoginView({ navigation }: Props) {
+    const dispatch = useDispatch();
     const formik = useFormik<FormValues>({
         initialValues: {
             email: '',
@@ -35,6 +38,7 @@ export function LoginView({ navigation }: Props) {
         onSubmit: async values => {
             try {
                 const user = await loginUser(values);
+                dispatch(updateUser(user));
                 navigation.navigate('Orders');
               } catch (error) {
                 const errorMsg =
