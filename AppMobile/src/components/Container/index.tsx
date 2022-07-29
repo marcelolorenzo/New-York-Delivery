@@ -11,7 +11,7 @@ export function Container ({ children, padding = false, center = false}: Props) 
     return (
     <View style={[styles.container, padding ? styles.padding : {}, center ? styles.center : {}]}>
         {children}
-        </View>;
+        </View>
     );
  }
 const styles = StyleSheet.create({

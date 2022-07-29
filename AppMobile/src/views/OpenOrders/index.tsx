@@ -5,10 +5,10 @@ import {selectOpenOrders} from '../../store/slices/ordersSlice';
 
 export function OpenOrdersView() {
   const openOrders = useSelector(selectOpenOrders);
-  return (
+  return ( 
     <OrdersList
       orders={openOrders}
-      noOrdersMessage="Nenhum pedido disponível encontrado."
+      noOrdersMessage="Nenhum pedido em andamento encontrado."
     />
   );
 }

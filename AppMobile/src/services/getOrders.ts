@@ -2,8 +2,10 @@ import firestore, { FirebaseFirestoreTypes } from '@react-native-firebase/firest
 import { Order } from '../entities/Order';
 
 export const getOrders = async (userId: string) => {
-    const openOrders = await findOpenOrders();
-    const partnerOrders = await findPartnerOrders(userId);
+    const [openOrders, partnerOrders] = await Promise.all([
+        findOpenOrders(),
+        findPartnerOrders(userId), 
+    ]);
     return [...openOrders, ...partnerOrders];
 };
 
@@ -49,7 +51,7 @@ const findPartnerOrders = async (userId: string) => {
             value,
             partnerValue,
             user,
-            createdAt,
+            createdAt: createdAt.toDate().toISOString(),
             pickupAddress,
             deliveryAddress,
             comments,

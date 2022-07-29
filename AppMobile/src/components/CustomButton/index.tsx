@@ -34,7 +34,7 @@ export function CustomButton({
                     style={styles.loading}
                 />
             }
-            <CustomText style={[styles.textBase, styles[`text${size}`]}>
+            <CustomText style={[styles.textBase, styles[`text${size}`]]}>
             {children}
             </CustomText>
         </TouchableOpacity>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     disabledprimary: {
         backgroundColor: '#007bff'
     },
-    success: {
+    sucess: {
     backgroundColor: '#198754',
 },
 disabledsucess: {

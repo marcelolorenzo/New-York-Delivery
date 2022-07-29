@@ -10,24 +10,21 @@ import { AcceptedOrdersView } from '../AcceptedOrders';
 import { FinishedOrdersView } from '../FinishedOrders';
 import { OpenOrdersView } from '../OpenOrders';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { getOrders } from '../../services/getOrders';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../store/slices/userSlice';
+import { loadOrders, selectAcceptedOrders } from '../../store/slices/ordersSlice';
+import { useAppDispatch } from '../../store/store';
 
 const Tab = createBottomTabNavigator();
 
-
 export function OrdersView() {
+    const acceptedOrders = useSelector(selectAcceptedOrders);
     const user = useSelector(selectUser);
+    const userId = user?.id || '';
+    const dispatch = useAppDispatch();
     useEffect(() => {
-        const fetchOrders = async () => {
-            if (!user) {
-                return;
-            }
-            const orders = await getOrders(user.id);
-        };
-        fetchOrders();
-    }, [user]);
+        dispatch(loadOrders(userId));
+    }, [userId, dispatch]);
     return (
         <Tab.Navigator
             screenOptions={({ route }) => ({
@@ -57,6 +54,11 @@ export function OrdersView() {
                     fontFamily: 'Lato-Regular',
                     fontSize: 12,
                   },
+                  tabBarBadgeStyle: {
+                    backgroundColor: '#FF3B30',
+                    fontSize: 14,
+                    fontFamily: 'Lato-Regular',
+                  }, 
             })}>
             <Tab.Screen
                 name="OpenOrders"

@@ -5,7 +5,7 @@ import { CustomButton } from '../../components/CustomButton';
 import { FormField } from '../../components/FormField';
 import * as yup from 'yup';
 import Toast from 'react-native-toast-message';
-import { loginUser } from '../../../android/app/src/services/loginUser';
+import { loginUser } from '../../services/loginUser';
 import { isNativeFirebaseAuthError } from '../../utils/isNativeFirebaseAuthError';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../routes';

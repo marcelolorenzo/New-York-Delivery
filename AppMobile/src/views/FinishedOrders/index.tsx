@@ -5,10 +5,10 @@ import {selectFinishedOrders} from '../../store/slices/ordersSlice';
 
 export function FinishedOrdersView() {
   const finishedOrders = useSelector(selectFinishedOrders);
-  return (
+  return ( 
     <OrdersList
       orders={finishedOrders}
-      noOrdersMessage="Nenhum pedido finalizado encontrado."
+      noOrdersMessage="Nenhum pedido em andamento encontrado."
     />
   );
 }

@@ -7,8 +7,8 @@ export function AcceptedOrdersView() {
   const acceptedOrders = useSelector(selectAcceptedOrders);
   return (
     <OrdersList
-      orders={acceptedOrders}
-      noOrdersMessage="Nenhum pedido em andamento encontrado."
+      orders={acceptedOrders} 
+       noOrdersMessage="Nenhum pedido em andamento encontrado."
     />
   );
 }

@@ -4,7 +4,7 @@ import { HomeView } from './views/Home';
 import { LoginView } from './views/Login';
 import { OrdersView } from './views/Orders';
 import auth from '@react-native-firebase/auth'
-import { getUser } from '../android/app/src/services/getUser';
+import { getUser } from './services/getUser';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteUser, selectIsLoadingUser, selectIsUserLoggedIn, updateUser } from './store/slices/userSlice';
 import { LogoutButton } from './components/LogoutButton';
