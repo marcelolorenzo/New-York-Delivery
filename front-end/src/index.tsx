@@ -11,7 +11,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 const paypalOptions = {
-  'client-id': 'AVp1720Oe44DJu1rzw8DTOJhw2VXQkE4oYiUQsd61ZhHB2rFMx0zkdgv34dR9fMwc_e-LvTne6Pa-gsS'
+  'client-id': 'AVp1720Oe44DJu1rzw8DTOJhw2VXQkE4oYiUQsd61ZhHB2rFMx0zkdgv34dR9fMwc_e-LvTne6Pa-gsS',
   currency: 'USD'
 }
 

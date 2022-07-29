@@ -4,7 +4,7 @@ import { Container, Nav } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Logo from "../../assets/img/Logo-UberJet.png"
+import Logo from "../../assets/img/Logo-NewYork.png"
 import { selectIsUserLoggedIn } from "../../store/slices/userSlice";
 
 type Props = {

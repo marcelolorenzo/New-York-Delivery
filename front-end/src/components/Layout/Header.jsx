@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav'
 import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Logo from "../../assets/img/Logo-UberJet.png"
+import Logo from "../../assets/img/Logo-NewYork.png"
 import { CustomButton } from "../CustomButton";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";

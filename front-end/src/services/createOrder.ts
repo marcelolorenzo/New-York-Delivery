@@ -1,5 +1,6 @@
-import { addDoc } from "firebase/firestore"
+import { addDoc, collection } from "firebase/firestore"
 import { Estimate } from "../entities/Estimate"
+import { db } from "./firebase"
 
 type NewOrderInput = {
     estimate: Estimate

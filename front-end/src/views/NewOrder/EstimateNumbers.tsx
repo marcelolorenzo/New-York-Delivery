@@ -8,8 +8,8 @@ export function EstimateNumbers() {
         return null
     }
     return (
-        <WrapStyled>
-            <NumberItem>
+                <WrapStyled>
+        <NumberItem>
                 <span>Time</span>
                 {currentEstimate.minutes} min
             </NumberItem>
@@ -21,6 +21,7 @@ export function EstimateNumbers() {
                 <span>Cost</span>
                 {currentEstimate.value.toLocaleString('pt-br', {currency: 'USD', style: 'currency'})}
             </NumberItem>
+                </WrapStyled>
         
     )
 }

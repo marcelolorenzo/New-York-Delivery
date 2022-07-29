@@ -1,15 +1,18 @@
-import { useSelector } from "react-redux";
-import { selectCurrentEstimate } from "../../store/slices/estimateSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCurrentEstimate, selectCurrentEstimate } from "../../store/slices/estimateSlice";
 import { OrderResponseBody } from '@paypal/paypal-js'
 import { toast } from "react-toastify";
 import { PaypalButton } from "../../components/PaypalButton";
 import { createOrder } from "../../services/createOrder";
 import { selectUser } from "../../store/slices/userSlice";
+import { useNavigate } from "react-router-dom";
 
 
 export function EstimateFinish() {
     const currentEstimate = useSelector(selectCurrentEstimate)
     const user = useSelector(selectUser)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     if (!currentEstimate || !user) {
         return null
     }
@@ -20,6 +23,8 @@ export function EstimateFinish() {
                 gatewayId: details.id,
                 userId: user.id
             })
+            dispatch(clearCurrentEstimate())
+            navigate('/novo-pedido/sucesso')
         } catch {
             toast.error('Failed to process the payment. Please try again.')
         }

@@ -37,7 +37,7 @@ export function PaypalButton({ value, onSucess, onError }: Props) {
                 layout: 'horizontal',
                 color: 'blue',
                 shape: 'pill',
-                tagline: 'false',
+                tagline: false,
                 height: 38
             }}
         />

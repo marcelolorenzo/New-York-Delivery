@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import bgMobile from "../../assets/img/bg-uber-jet-mobile.jpg"
-import bgDesktop from "../../assets/img/bg-uber-jet.jpg"
+import bgDesktop from "../../assets/img/bg-ny-delivery.jpg"
 import { CustomButton } from "../../components/CustomButton";
 import { Layout } from "../../components/Layout";
 import { selectIsUserLoggedIn } from "../../store/slices/userSlice";
@@ -13,13 +13,13 @@ export function HomeView () {
       <Layout withoutMargin>
       <Banner className="vh-100">
          <Container className="h-100 d-flex flex-column justify-content-center align-items-center align-items-lg-start">
-         <Title className="text-white text-center text-lg-start mt-auto mt-lg-0">Take the next best meal to your house destination.</Title>
+         <Title className="text-white text-center text-lg-start mt-auto mt-lg-0">Order the next best meal directly to your home.</Title>
          {isUserLoggedIn ? (
-          <CustomButton variant="success" size="lg" className="mt-auto mt-lg-3 mb-4" to='/novo-pedido'>New Order</CustomButton>
+          <CustomButton variant="warning" size="lg" className="mt-auto mt-lg-3 mb-4" to='/novo-pedido'>New Order</CustomButton>
          ) : (
            <>
-          <CustomButton variant="success" size="lg" className="mt-auto mt-lg-3 mb-2" to='/cadastro'>Create an account</CustomButton>
-          <CustomButton variant="success" size="lg" className="mb-4" to='/login'>Login</CustomButton>
+          <CustomButton variant="warning" size="lg" className="mt-auto mt-lg-3 mb-2" to='/cadastro'>Create an account</CustomButton>
+          <CustomButton variant="warning" size="lg" className="mb-4" to='/login'>Login</CustomButton>
           </>
          )}
       </Container> 
